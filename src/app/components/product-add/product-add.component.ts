@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { Product } from '../../common/product';
 
 @Component({
   selector: 'app-product-add',
@@ -35,29 +35,28 @@ export class ProductAddComponent implements OnInit{
     this.getProductById();
   }
   addProduct(): void {
-   const formData = new FormData();
-   formData.append('id', this.id.toString());
-    formData.append('code', this.code);
-    formData.append('name', this.name);
-    formData.append('description', this.description);
-    formData.append('price', this.price.toString());
+    const formData = new FormData();
+    formData.append('id', this.id ? this.id.toString() : '0');
+    formData.append('code', this.code ? this.code : '');
+    formData.append('name', this.name ? this.name : '');
+    formData.append('description', this.description ? this.description : '');
+    formData.append('price', this.price ? this.price.toString() : '0');
     formData.append('image', this.selectFile);
-    formData.append('urlImage', this.urlImage);
-    formData.append('stock', this.stock.toString());
-    formData.append('stock_min', this.stock_min.toString());
-    formData.append('stock_max', this.stock_max.toString());
-    formData.append('dateCreated', this.dateCreated.toISOString());
-    formData.append('dateUpdated', this.dateCreated.toISOString());
-    formData.append('categoryId', this.categoryId.toString());
+    formData.append('urlImage', this.urlImage ? this.urlImage : '');
+    formData.append('stock', this.stock ? this.stock.toString() : '0');
+    formData.append('stock_min', this.stock_min ? this.stock_min.toString() : '0');
+    formData.append('stock_max', this.stock_max ? this.stock_max.toString() : '0');
+    formData.append('dateCreated', this.dateCreated instanceof Date ? this.dateCreated.toISOString() : new Date().toISOString());
+    formData.append('dateUpdated', this.dateCreated instanceof Date ? this.dateCreated.toISOString() : new Date().toISOString());
+    formData.append('categoryId', this.categoryId ? this.categoryId.toString() : '0');
     
     console.log(formData);
-
+  
     this.productService.createProduct(formData).subscribe(
       data => {
         console.log(data),
-
-      this.router.navigate(['/admin/product/']);
-    }
+        this.router.navigate(['/admin/product']);
+      }
     );  
   }
 
