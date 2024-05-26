@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product } from '../../common/product';
+
 
 @Component({
   selector: 'app-product-add',
@@ -56,7 +56,7 @@ export class ProductAddComponent implements OnInit{
       data => {
         console.log(data),
 
-      this.router.navigate(['/admin/product']);
+      this.router.navigate(['/admin/product/']);
     }
     );  
   }
