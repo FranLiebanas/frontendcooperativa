@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Product } from '../../common/product';
 
 @Component({
   selector: 'app-product-add',
@@ -22,12 +24,15 @@ export class ProductAddComponent implements OnInit{
   dateUpdated: Date = new Date();
   categoryId: number = 0;
  
-  
+  selectFile! : File;
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+    private router:Router,
+    private activatedRoute:ActivatedRoute ) { }
 
   ngOnInit():void {
-    
+    this.getProductById();
   }
   addProduct(): void {
    const formData = new FormData();
@@ -36,6 +41,7 @@ export class ProductAddComponent implements OnInit{
     formData.append('name', this.name);
     formData.append('description', this.description);
     formData.append('price', this.price.toString());
+    formData.append('image', this.selectFile);
     formData.append('urlImage', this.urlImage);
     formData.append('stock', this.stock.toString());
     formData.append('stock_min', this.stock_min.toString());
@@ -47,7 +53,46 @@ export class ProductAddComponent implements OnInit{
     console.log(formData);
 
     this.productService.createProduct(formData).subscribe(
-      data => console.log(data),
-    );
+      data => {
+        console.log(data),
+
+      this.router.navigate(['/admin/product']);
+    }
+    );  
   }
+
+  getProductById() {
+    this.activatedRoute.params.subscribe(params => {
+      let id = params['id'];
+      if (id) {
+        console.log("El valor de la variable id es: " + id);
+        this.productService.getProductById(id).subscribe(
+          (data) => {
+          this.id = data.id;
+          this.code = data.code;
+          this.name = data.name;
+          this.description = data.description;
+          this.price = data.price;
+          this.urlImage = data.urlImage;
+          this.stock = data.stock;
+          this.stock_min = data.stock_min;
+          this.stock_max = data.stock_max;
+          this.dateCreated = data.dateCreated;
+          this.dateUpdated = data.dateUpdated;
+          this.categoryId = data.categoryId;
+        });
+      }
+    });
+  }
+  
+  onFileSelected(event: any) {
+    this.selectFile = event.target.files[0];
+    console.log(this.selectFile);
+  }
+      
+    
+    
+
+  
+
 }

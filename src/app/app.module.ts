@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
         HeaderAdminComponent,
         ProductAddComponent,
         
+        
     ],
     providers: [],
     bootstrap: [AppComponent],
