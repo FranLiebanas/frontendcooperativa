@@ -10,6 +10,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { HeaderAdminComponent } from './components/header-admin/header-admin.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
 import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { FormsModule } from '@angular/forms';
         AppRoutingModule,
         HttpClientModule,
         HomeComponent,
-        FormsModule
+        FormsModule,
+        
     ]
 })
 export class AppModule { }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
+import { ToastrModule } from 'ngx-toastr';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,7 +14,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),
+    ToastrModule.forRoot()],
+  
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
