@@ -11,6 +11,7 @@ import { HeaderAdminComponent } from './components/header-admin/header-admin.com
 import { ProductAddComponent } from './components/product-add/product-add.component';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { CategoryListComponent } from './components/category/category-list/category-list.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { ToastrModule } from 'ngx-toastr';
         ProductListComponent,
         HeaderAdminComponent,
         ProductAddComponent,
+        CategoryListComponent,
         
         
     ],
