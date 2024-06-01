@@ -12,6 +12,7 @@ import { ProductAddComponent } from './components/product-add/product-add.compon
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { CategoryListComponent } from './components/category/category-list/category-list.component';
+import { CategoryAddComponent } from './components/category/category-add/category-add.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { CategoryListComponent } from './components/category/category-list/categ
         HeaderAdminComponent,
         ProductAddComponent,
         CategoryListComponent,
+        CategoryAddComponent,
         
         
     ],

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from '../../../common/category';
 import { CategoryService } from '../../../services/category.service';
 import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-category-list',
@@ -31,5 +32,33 @@ export class CategoryListComponent implements OnInit{
       }
     );
   }
+
+
+  deleteCategoryById(id:number){
+    Swal.fire({
+      title: "¿Está seguro?",
+      text: "No puede revertir los cambios!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Eliminar!",
+      cancelButtonText: "Cancelar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.categoryService.deleteCategoryById(id).subscribe(
+          () => this.listCategories()
+          
+        );
+        Swal.fire({
+          title: "Categoria borrada!",
+          text: "Categoria eliminada correctamente.",
+          icon: "success"
+        });
+      }
+    });
+    
+  }
+  
 
 }
