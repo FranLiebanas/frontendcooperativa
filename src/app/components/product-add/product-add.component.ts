@@ -3,6 +3,8 @@ import { ProductService } from '../../services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
+import { Category } from '../../common/category';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-product-add',
@@ -27,16 +29,21 @@ export class ProductAddComponent implements OnInit{
  
   selectFile! : File;
 
+  categories: Category[] = [];
+
   constructor(
     private productService: ProductService,
     private router:Router,
     private activatedRoute:ActivatedRoute,
-    private toastr:ToastrService
+    private toastr:ToastrService,
+    private categoryService: CategoryService,
 
    ) { }
 
   ngOnInit():void {
+    this.getCategories();
     this.getProductById();
+    
   }
   addProduct(): void {
     const formData = new FormData();
@@ -104,7 +111,13 @@ export class ProductAddComponent implements OnInit{
   }
       
     
-    
+   getCategories() {
+    return this.categoryService.getCategoryList().subscribe(
+      (data) => {
+        this.categories = data;
+      }
+    );
+    }
 
   
 

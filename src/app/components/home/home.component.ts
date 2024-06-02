@@ -1,29 +1,26 @@
-import { Component } from '@angular/core';
-import { OnInit } from '@angular/core';
-import { ProductService } from '../../services/product.service';
+import { Component, OnInit } from '@angular/core';
 import { Product } from '../../common/product';
-import { CommonModule } from '@angular/common';
+import { HomeService } from '../../services/home.service';
+
 
 
 @Component({
   selector: 'app-home',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit{
+  products: Product [] = [];
 
-  products: Product[] = [];
-  constructor(private productService: ProductService) {
+  constructor(private homeService:HomeService){
 
-   }
-
+  }
+  
   ngOnInit(): void {
-    this.productService.getProducts().subscribe(
+    this.homeService.getProducts().subscribe(
       data => this.products = data
-      
     );
   }
+
 
 }
