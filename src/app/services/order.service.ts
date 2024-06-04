@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Order } from '../common/order';
 import { Observable } from 'rxjs';
+import { HeaderService } from './header.service';
 
 
 @Injectable({
@@ -29,3 +30,4 @@ export class OrderService {
     return this.httpClient.get<Order>(`${this.apiUrl}/${orderId}`, { headers: this.headerService.headers });
   }
 }
+

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from '../common/product';
+import { HeaderService } from './header.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,22 +10,24 @@ import { Product } from '../common/product';
 export class ProductService {
   private apiUrl : string = "http://localhost:8081/api/admin/products";
 
-  constructor(
-    private http: HttpClient) {}
+  constructor(private httpClient:HttpClient, private headerService : HeaderService ){}
+  
 
-  getProducts():Observable<Product[]> {
-    return this.http.get<Product[]>(this.apiUrl);
-    
-  }
-  createProduct(formData: any): Observable<any> {
-    return this.http.post<Product>(this.apiUrl, formData);
+  getProducts():Observable<Product[]>{
+    return this.httpClient.get<Product[]>(this.apiUrl, {headers: this.headerService.headers});
   }
 
-  deleteProduct(id: number): Observable<any> {
-    return this.http.delete(this.apiUrl+"/"+id);
+  createProduct(formData:any):Observable<any>{
+    return this.httpClient.post<Product>(this.apiUrl,formData, {headers: this.headerService.headers});
   }
 
-  getProductById(id: number): Observable<Product> {
-    return this.http.get<Product>(this.apiUrl+"/"+id);
+  deleteProductById(id:number):Observable<any>{
+    return this.httpClient.delete(this.apiUrl+"/"+id , {headers: this.headerService.headers});
   }
+
+  getProductById(id:number):Observable<Product>{
+    return this.httpClient.get<Product>(this.apiUrl+"/"+id, {headers: this.headerService.headers});
+  }
+  
 }
+

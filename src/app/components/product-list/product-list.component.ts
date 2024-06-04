@@ -38,7 +38,7 @@ export class ProductListComponent implements OnInit{
       cancelButtonText: "Cancelar"
     }).then((result) => {
       if (result.isConfirmed) {
-        this.productService.deleteProduct(id).subscribe(
+        this.productService.deleteProductById(id).subscribe(
           () => this.listProducts()
           
         );

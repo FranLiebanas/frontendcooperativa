@@ -19,6 +19,10 @@ import { DetailProductComponent } from './components/cart/detail-product/detail-
 import { HeaderUserComponent } from './components/header-user/header-user.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { SumaryOrderComponent } from './components/orders/sumary-order/sumary-order.component';
+import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
+import { RegistrationComponent } from './components/authetication/registration/registration.component';
+import { LoginComponent } from './components/authetication/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 
@@ -35,6 +39,10 @@ import { SumaryOrderComponent } from './components/orders/sumary-order/sumary-or
         DetailProductComponent,
         HeaderUserComponent,
         SumaryOrderComponent,
+        PaymentSuccessComponent,
+        RegistrationComponent,
+        LoginComponent,
+        LogoutComponent,
         
         
     ],

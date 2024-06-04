@@ -1,10 +1,22 @@
 import { Component } from '@angular/core';
+import { SessionStorageService } from '../../services/session-storage.service';
 
 @Component({
   selector: 'app-header-admin',
   templateUrl: './header-admin.component.html',
-  styleUrl: './header-admin.component.css'
+  styleUrls: ['./header-admin.component.css']
 })
 export class HeaderAdminComponent {
+
+  constructor(private sessionStorage: SessionStorageService){
+    
+
+  }
+
+  removeSession(){
+    console.log('HeaderAdminComponent:' +sessionStorage.getItem('token'));
+    sessionStorage.removeItem('token');
+    console.log('HeaderAdminComponent: '+sessionStorage.getItem('token'));
+  }
 
 }

@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UrlPaypalResponse } from '../common/url-paypal-response';
 import { DataPayment } from '../common/data-payment';
+import { HeaderService } from './header.service';
 
 
 @Injectable({

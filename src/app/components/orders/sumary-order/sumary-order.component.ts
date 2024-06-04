@@ -8,6 +8,7 @@ import { Order } from '../../../common/order';
 import { OrderState } from '../../../common/order-state';
 import { PaymentService } from '../../../services/payment.service';
 import { DataPayment } from '../../../common/data-payment';
+import { SessionStorageService } from '../../../services/session-storage.service';
 
 
 @Component({
@@ -65,7 +66,7 @@ export class SumaryOrderComponent implements OnInit {
 
     //redireccion y pago con paypal
     let urlPayment;
-    let dataPayment = new DataPayment ('PAYPAL', this.totalCart.toString(), 'EUR', 'COMPRA');
+    let dataPayment = new DataPayment ('PAYPAL', this.totalCart.toString(), 'USD', 'COMPRA');
 
     console.log('Data Payment:', dataPayment);
 
@@ -93,7 +94,7 @@ export class SumaryOrderComponent implements OnInit {
         this.firstName = data.firstName;
         this.lastName = data.lastName;
         this.email = data.email;
-        this.address = data.street + ' ' + data.number + ' ' + data.floor + ' ' + data.postalCode + '' + data.city + ' ' + data.province;
+        this.address = data.address;
       }
     );
   }
