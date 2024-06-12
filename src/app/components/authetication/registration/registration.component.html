@@ -16,15 +16,21 @@
       </div>
     </div>
 	<form (ngSubmit)="register()">
+    <div class="form-group">
+      <label for="username">Nombre de usuario :</label> <input [(ngModel)]="username" type="text"
+        class="form-control" id="username" name="username"
+        placeholder="Ingrese su nombre user" autocomplete="off">
+    </div>
+
       <div class="form-group">
-        <label for="name">Nombre:</label> <input [(ngModel)]="name" type="text"
+        <label for="name">Nombre:</label> <input [(ngModel)]="firstName" type="text"
           class="form-control" id="name" name="name"
           placeholder="Ingrese su nombre" autocomplete="off">
       </div>
 	  
 	   <div class="form-group">
-        <label for="surname">Apellido:</label> <input [(ngModel)]="surname" type="text"
-          class="form-control" id="surname" name="surname"
+        <label for="lastName">Apellido:</label> <input [(ngModel)]="lastName" type="text"
+          class="form-control" id="lastName" name="lastName"
           placeholder="Ingrese su Apellido" autocomplete="off">
       </div>
 

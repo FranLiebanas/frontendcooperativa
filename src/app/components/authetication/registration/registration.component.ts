@@ -14,8 +14,8 @@ import { User } from '../../../common/user';
 export class RegistrationComponent  implements OnInit{
   
   username : string = '';
-  name : string = '';
-  surname : string = '';
+  firstName : string = '';
+  lastName : string = '';
   email : string = '';
   address : string = '';
   cellphone : string = '';
@@ -32,7 +32,7 @@ export class RegistrationComponent  implements OnInit{
   register(){
     this.username = this.email;
     this.userType = UserType.USER
-    let user = new User (0, this.username, this.name, this.surname, this.email, this.address, this.cellphone, this.password, this.userType);
+    let user = new User (0, this.username, this.firstName, this.lastName, this.email, this.address, this.cellphone, this.password, this.userType);
     this.authetication.register(user).subscribe(
       res => {
         this.toastr.success('Usuario registrado', 'Usuario');
