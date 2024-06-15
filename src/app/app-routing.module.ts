@@ -16,19 +16,19 @@ import { authGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'admin/product', component: ProductListComponent },
-  { path: 'admin/product/add', component: ProductAddComponent},
-  { path: 'admin/product/add/:id', component: ProductAddComponent},
-  { path: 'admin/category', component: CategoryListComponent},
-  { path: 'admin/category/add', component: CategoryAddComponent},
-  { path: 'admin/category/add/:id', component: CategoryAddComponent},
-  { path: 'cart/detailproduct/:id', component: DetailProductComponent},
-  { path: 'cart/sumary', component: SumaryOrderComponent, canActivate: [authGuard]},
-  { path: 'payment/success', component: PaymentSuccessComponent},
-  { path: 'user/register', component: RegistrationComponent},
-  { path: 'user/login', component: LoginComponent},
-  { path: 'logout', component: LogoutComponent},
+  {path:'', component:HomeComponent},
+  {path:'admin/product', component: ProductListComponent},
+  {path:'admin/product/addproduct', component: ProductAddComponent},
+  {path: 'admin/product/update/:id', component:ProductAddComponent },
+  {path: 'admin/category', component:CategoryListComponent },
+  {path: 'admin/category/add', component:CategoryAddComponent},
+  {path: 'admin/category/update/:id', component:CategoryAddComponent},
+  {path: 'cart/detailproduct/:id', component:DetailProductComponent},
+  {path: 'cart/sumary', component: SumaryOrderComponent, canActivate: [authGuard]},
+  {path: 'payment/success', component: PaymentSuccessComponent},
+  {path: 'user/register', component: RegistrationComponent},
+  {path: 'user/login', component: LoginComponent},
+  {path: 'logout', component: LogoutComponent}
 
 ];
 

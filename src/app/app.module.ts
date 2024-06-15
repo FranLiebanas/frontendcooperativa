@@ -29,20 +29,20 @@ import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
     declarations: [
-        AppComponent,
-        HomeComponent,
-        ProductListComponent,
-        HeaderAdminComponent,
-        ProductAddComponent,
-        CategoryListComponent,
-        CategoryAddComponent,
-        DetailProductComponent,
-        HeaderUserComponent,
-        SumaryOrderComponent,
-        PaymentSuccessComponent,
-        RegistrationComponent,
-        LoginComponent,
-        LogoutComponent,
+    AppComponent,
+    HomeComponent,
+    ProductListComponent,
+    HeaderAdminComponent,
+    ProductAddComponent,
+    CategoryListComponent,
+    CategoryAddComponent,
+    DetailProductComponent,
+    HeaderUserComponent,
+    SumaryOrderComponent,
+    PaymentSuccessComponent,
+    RegistrationComponent,
+    LoginComponent,
+    LogoutComponent
         
         
     ],

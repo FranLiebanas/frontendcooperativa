@@ -7,45 +7,46 @@ import { Category } from '../../../common/category';
 @Component({
   selector: 'app-category-add',
   templateUrl: './category-add.component.html',
-  styleUrl: './category-add.component.css'
+  styleUrls: ['./category-add.component.css']
 })
 export class CategoryAddComponent implements OnInit{
-  id: number = 0;
-  name: string = '';
+  id : number = 0;
+  name : string = '';
 
-  constructor(private categoryService:CategoryService, private toastr:ToastrService,
-     private router:Router,private activattedRoute: ActivatedRoute) { }
+  constructor(private categoryService:CategoryService, private toastr:ToastrService, private router:Router, private activatedRoute: ActivatedRoute){}
 
   ngOnInit(): void {
-    this.getCategoryById()
+    this.getCategoryById();
   }
 
   addCategory(){
-    let category = new Category(this.id, this.name );
+    console.log(this.name);
+    let category = new Category(this.id,this.name);    
     this.categoryService.createCategory(category).subscribe(
       res=>{
-        this.toastr.success('Categoria creada con exito', 'OK',);
+        this.toastr.success('Categoria registrada correctamente','Categorias');
         this.router.navigate(['admin/category']);
-      },
+      } 
     );
   }
 
   getCategoryById(){
-    this.activattedRoute.params.subscribe(
-      category=>{
+    this.activatedRoute.params.subscribe(
+      category =>{
         let id = category['id'];
         if(id){
+          console.log('Valor de la variable id: '+id);
           this.categoryService.getCategoryById(id).subscribe(
-            res=>{
-              this.id = res.id;
-              this.name = res.name;
+            data =>{
+              this.id = data.id;
+              this.name = data.name;
             }
+
           );
         }
       }
+
     );
   }
-
-
 
 }

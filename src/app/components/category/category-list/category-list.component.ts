@@ -7,58 +7,50 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
-  styleUrl: './category-list.component.css'
+  styleUrls: ['./category-list.component.css']
 })
-export class CategoryListComponent implements OnInit{
+export class CategoryListComponent implements OnInit {
 
-  categories : Category[] = [];
+  categories: Category [] = [];
 
-  constructor(
-    private categoryService:CategoryService,
-    private toastr:ToastrService
+  constructor(private categoryService:CategoryService, private toastr:ToastrService){}
 
-  ) { }
-  
-  ngOnInit():void {
+
+  ngOnInit(): void {
     this.listCategories();
   }
 
-
-  listCategories() {
+  listCategories(){
     this.categoryService.getCategoryList().subscribe(
-      data => {
-        this.categories = data
-        
-      }
+      data => this.categories = data
     );
   }
 
-
   deleteCategoryById(id:number){
+    console.log('id de la categoria antes de eliminar: '+id);
+    
     Swal.fire({
-      title: "¿Está seguro?",
-      text: "No puede revertir los cambios!",
-      icon: "warning",
+      title: 'Está seguro que quiere eliminar el registro?',
+      text: "",
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Eliminar!",
-      cancelButtonText: "Cancelar"
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Eliminar',
+      cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
         this.categoryService.deleteCategoryById(id).subscribe(
-          () => this.listCategories()
-          
+          ()=> this.listCategories()
         );
-        Swal.fire({
-          title: "Categoria borrada!",
-          text: "Categoria eliminada correctamente.",
-          icon: "success"
-        });
+        Swal.fire(
+          'Categorías',
+          'Categoría eliminado correctamente.',
+          'success'
+        )
       }
-    });
-    
+    })
+
   }
-  
 
 }

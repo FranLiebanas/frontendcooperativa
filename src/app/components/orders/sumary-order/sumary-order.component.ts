@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { ItemCart } from '../../../common/item-cart';
-import { CartService } from '../../../services/cart.service';
-import { UserService } from '../../../services/user.service';
-import { OrderService } from '../../../services/order.service';
-import { OrderProduct } from '../../../common/order-product';
-import { Order } from '../../../common/order';
-import { OrderState } from '../../../common/order-state';
-import { PaymentService } from '../../../services/payment.service';
-import { DataPayment } from '../../../common/data-payment';
-import { SessionStorageService } from '../../../services/session-storage.service';
+import { Component, OnInit } from "@angular/core";
+import { DataPayment } from "../../../common/data-payment";
+import { ItemCart } from "../../../common/item-cart";
+import { Order } from "../../../common/order";
+import { OrderProduct } from "../../../common/order-product";
+import { OrderState } from "../../../common/order-state";
+import { CartService } from "../../../services/cart.service";
+import { OrderService } from "../../../services/order.service";
+import { PaymentService } from "../../../services/payment.service";
+import { SessionStorageService } from "../../../services/session-storage.service";
+import { UserService } from "../../../services/user.service";
+
 
 
 @Component({
@@ -55,7 +56,7 @@ export class SumaryOrderComponent implements OnInit {
       }
     );
 
-    let order = new Order(null, new Date(), this.orderProducts, this.userId, OrderState.CANCELLED);
+    let order = new Order(null, new Date(), this.orderProducts, this.userId, OrderState.CONFIRMED);
     console.log('Order: '+ order.orderState);
     this.orderService.createOrder(order).subscribe(
       data => {

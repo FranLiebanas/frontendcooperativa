@@ -1,10 +1,10 @@
-<app-header-admin></app-header-admin>
+<app-header-admin> </app-header-admin>
 
 <!-- Page Content List Categories-->
 <div class="container">
     <!-- Page Heading/Breadcrumbs -->
     <h1 class="mt-4 mb-3">
-        Spring eCommerce <small>Categorias</small>
+        Oil ECommerce <small>Categorias</small>
     </h1>
 
     <ol class="breadcrumb">
@@ -22,11 +22,11 @@
                 <th>Eliminar</th>
             </tr>
         </thead>
-        <tbody *ngFor="let category of categories">
+        <tbody *ngFor = "let c of categories">
             <tr>
-                <td>{{category.name}}</td>                
-                <td><button class="btn btn-warning" [routerLink]="['/admin/category/add', category.id]">Editar</button> </td>
-                <td><button class="btn btn-danger" (click)="deleteCategoryById(category.id)">Eliminar</button>
+                <td>{{c.name }}</td>                
+                <td><button class="btn btn-warning" [routerLink]="['/admin/category/update', c.id]" >Editar</button> </td>
+                <td><button class="btn btn-danger" (click)="deleteCategoryById(c.id)">Eliminar</button>
             </tr>
         </tbody>
     </table>

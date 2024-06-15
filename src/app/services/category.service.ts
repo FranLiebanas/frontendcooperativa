@@ -9,7 +9,7 @@ import { HeaderService } from './header.service';
 })
 export class CategoryService {
 
-  private apiUrl: string = "http://localhost:8081/api/admin/categories";
+  private apiUrl: string = 'http://localhost:8081/api/admin/categories';
 
   constructor(private http:HttpClient, private headerService : HeaderService) { }
 
@@ -31,4 +31,5 @@ export class CategoryService {
   }
   
 }
+
 

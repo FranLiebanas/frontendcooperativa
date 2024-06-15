@@ -1,10 +1,10 @@
-<app-header-admin></app-header-admin>
+<app-header-admin> </app-header-admin>
 
         <!-- Page Content List Products-->
         <div class="container">
             <!-- Page Heading/Breadcrumbs -->
             <h1 class="mt-4 mb-3">
-                Oil eCommerce <small>Productos</small>
+                OilCommerce  <small>Productos</small>
             </h1>
         
             <ol class="breadcrumb">
@@ -12,7 +12,7 @@
                 <li class="breadcrumb-item active">Ver Productos</li>
             </ol>
         
-            <a class="btn btn-primary" routerLink="/admin/product/add"> Crear Producto</a>
+            <a class="btn btn-primary" routerLink="/admin/product/addproduct" > Crear Producto</a>
             <h2>Productos</h2>
             <table class="table">
                 <thead>
@@ -29,12 +29,11 @@
                     <tr>
                         <td>{{producto.code}}</td>
                         <td>{{producto.name}}</td>
-                        <td>{{producto.price}}</td>
                         <td>{{producto.description}}</td>
-                        <td><button class="btn btn-warning" [routerLink]="['/admin/product/add/', producto.id]" >Editar</button> </td>
-                        <td><button class="btn btn-danger" (click)="deleteProductById(producto.id)">Eliminar</button>
+                        <td>{{producto.price}}</td>
+                        <td><button class="btn btn-warning" [routerLink]="['/admin/product/update', producto.id]">Editar</button> </td>
+                        <td><button class="btn btn-danger" (click)="deleteProductById(producto.id)" >Eliminar</button>
                     </tr>
                 </tbody>
             </table>        
         </div>
-
