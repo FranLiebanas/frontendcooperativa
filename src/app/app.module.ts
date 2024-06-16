@@ -23,6 +23,7 @@ import { PaymentSuccessComponent } from './components/payment-success/payment-su
 import { RegistrationComponent } from './components/authetication/registration/registration.component';
 import { LoginComponent } from './components/authetication/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { LoadingSpinnerComponent } from './components/orders/spinner/loading-spinner.component';
 
 
 
@@ -42,7 +43,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     PaymentSuccessComponent,
     RegistrationComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    LoadingSpinnerComponent,
         
         
     ],

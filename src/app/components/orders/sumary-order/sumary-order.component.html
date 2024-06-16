@@ -1,3 +1,5 @@
+<!-- sumary-order.component.html -->
+
 <!-- Header User-->
 <app-header-user></app-header-user>
 
@@ -13,6 +15,11 @@
     <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
     <li class="breadcrumb-item active">Orden</li>
   </ol>
+
+  <!-- Spinner de carga -->
+  <div *ngIf="loading" class="spinner-overlay">
+    <shared-loading-spinner></shared-loading-spinner>
+  </div>
 
   <!-- Blog Post -->
   <div class="card mb-4">
@@ -60,7 +67,7 @@
             <li class="list-group-item">
               <h5> Total: {{totalCart}}</h5>
             </li>
-            <a class="btn btn-dark" (click)="generateOrder()">Pagar con Paypal</a>
+            <button *ngIf="!loading" class="btn btn-dark" (click)="generateOrder()">Pagar con Paypal</button>
           </ul>
         </div>
       </div>
@@ -68,3 +75,9 @@
   </div>
 </div>
 <!-- /.container -->
+
+<footer class="py-5 bg-dark">
+  <div class="container">
+    <p class="m-0 text-center text-white">Copyright &copy; OilCommerce 2024</p>
+  </div>
+</footer>
